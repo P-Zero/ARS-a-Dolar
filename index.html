@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cambios Dolar Arg</title>
+</head>
+<body>
+    <main>
+        <div>
+            <input min="0" placeholder="Ingresa tus Pesos" type="number" onkeyup=calculator(this.value) onclick="calculator(this.value)" id="pesos" autofocus>
+        </div>
+        <div>
+            <ul class="usd_types">
+                <li class="usd blue"><span>Blue:</span> $483</li>
+                <li class="usd oficial"><span>Oficial:</span> $254</li>
+                <li class="usd liqui"><span>Contado con Liqui:</span> $491</li>
+                <li class="usd cripto"><span>Cripto:</span> $488</li>
+            </ul>
+        </div>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
