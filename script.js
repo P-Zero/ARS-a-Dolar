@@ -1,20 +1,23 @@
-const TYPES = document.querySelector('.usd_types')
-const PRICES = [483, 254, 491, 488]
-const PESOS = document.querySelector('#pesos')
+async function calculator(pesos){
+    const res = await fetch('https://api.bluelytics.com.ar/v2/latest')
+    const data = await res.json()
+    const LIST = document.querySelector('.usd_list')
 
-function calculator(pesos){
     if (pesos == 0){
-        TYPES.innerHTML = `
-        <li class="usd blue"><p>Blue: </p><span>$${PRICES[0]}</span></li>
-        <li class="usd oficial"><p>Oficial: </p><span>$${PRICES[1]}</span></li>
-        <li class="usd liqui"><p>Contado con Liqui: </p><span>$${PRICES[2]}</span></li>
-        <li class="usd cripto"><p>Cripto: </p><span>$${PRICES[3]}</span></li>`
+        LIST.innerHTML = `
+        <li class="usd blue"><p>Dólar Blue: </p><span>$${data.blue.value_sell}</span></li>
+        <li class="usd oficial"><p>Dólar Oficial: </p><span>$${data.oficial.value_sell}</span></li>
+        <li class="usd liqui"><p>Euro Blue: </p><span>$${data.blue_euro.value_sell}</span></li>
+        <li class="usd cripto"><p>Euro Oficial: </p><span>$${data.oficial_euro.value_sell}</span></li>`
     }
     else{
-        TYPES.innerHTML = `
-        <li class="usd blue"><p>Blue: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / PRICES[0]))}</span></li>
-        <li class="usd oficial"><p>Oficial: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / PRICES[1]))}</span></li>
-        <li class="usd liqui"><p>Contado con Liqui: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / PRICES[2]))}</span></li>
-        <li class="usd cripto"><p>Cripto: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / PRICES[3]))}</span></li>`
+        LIST.innerHTML = `
+        <li class="usd blue"><p>Dólar Blue: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.blue.value_sell))}</span></li>
+        <li class="usd oficial"><p>Dólar Oficial: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.oficial.value_sell))}</span></li>
+        <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.blue_euro.value_sell))}</span></li>
+        <li class="eur oficial"><p>Euro Oficial: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.oficial_euro.value_sell))}</span></li>`
     }
 }
+
+calculator(0)
+
