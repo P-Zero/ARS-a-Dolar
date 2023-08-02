@@ -1,23 +1,44 @@
-async function calculator(pesos){
+async function calculator(){
     const res = await fetch('https://api.bluelytics.com.ar/v2/latest')
     const data = await res.json()
-    const LIST = document.querySelector('.usd_list')
+    const LIST = document.querySelector('#currency_list')
+    const CHANGE_BUTTON = document.querySelector('#change_mode')
+    const INPUT = document.querySelector('#currency')
+    let boolean = true
 
-    if (pesos == 0){
-        LIST.innerHTML = `
-        <li class="usd blue"><p>Dólar Blue: </p><span>$${data.blue.value_sell}</span></li>
-        <li class="usd oficial"><p>Dólar Oficial: </p><span>$${data.oficial.value_sell}</span></li>
-        <li class="usd liqui"><p>Euro Blue: </p><span>$${data.blue_euro.value_sell}</span></li>
-        <li class="usd cripto"><p>Euro Oficial: </p><span>$${data.oficial_euro.value_sell}</span></li>`
+    CHANGE_BUTTON.addEventListener('click', () => {
+        boolean = !boolean
+        calcs()
+    })
+    INPUT.addEventListener('change', calcs)
+    INPUT.addEventListener('keyup', calcs)
+    
+    function getInputValue(){
+        return document.querySelector('#currency').value
     }
-    else{
-        LIST.innerHTML = `
-        <li class="usd blue"><p>Dólar Blue: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.blue.value_sell))}</span></li>
-        <li class="usd oficial"><p>Dólar Oficial: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.oficial.value_sell))}</span></li>
-        <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.blue_euro.value_sell))}</span></li>
-        <li class="eur oficial"><p>Euro Oficial: </p><span>$${Intl.NumberFormat('de-DE').format(Math.round(pesos / data.oficial_euro.value_sell))}</span></li>`
+
+    function calcs(){
+        if(boolean){
+            LIST.innerHTML = `
+            <li class="usd blue"><p>Dólar Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.blue.value_sell)} <p class="crry">USD</p></span></li>
+            <li class="usd oficial"><p>Dólar Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.oficial.value_sell)} <p class="crry">USD</p></span></li>
+            <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.blue_euro.value_sell)} <p class="crry">EUR</span></p></li>
+            <li class="eur oficial"><p>Euro Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.oficial_euro.value_sell)} <p class="crry">EUR</p></span></li>`
+            INPUT.placeholder = "ARS"
+        }
+        else{
+            LIST.innerHTML = `
+            <li class="usd blue"><p>Dólar Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() * data.blue.value_sell)} <p class="crry">ARS</p></span></li>
+            <li class="usd oficial"><p>Dólar Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() * data.oficial.value_sell)} <p class="crry">ARS</p></span></li>
+            <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() * data.blue_euro.value_sell)} <p class="crry">ARS</p></span></li>
+            <li class="eur oficial"><p>Euro Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() * data.oficial_euro.value_sell)} <p class="crry">ARS</p></span></li>`
+
+            INPUT.placeholder = "USD / EUR"
+        }
     }
+
+    calcs()
 }
 
-calculator(0)
+calculator()
 

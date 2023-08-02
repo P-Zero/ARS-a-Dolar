@@ -8,12 +8,13 @@
     <title>Cambios Dolar Arg</title>
 </head>
 <body>
-    <main>
+    <main id="main">
         <div>
-            <input min="0" placeholder="Ingresa tus Pesos" type="number" onkeyup=calculator(this.value) onclick="calculator(this.value)" id="pesos" autofocus>
+            <input min="0" type="number" id="currency" autofocus>
+            <ul id="currency_list"></ul>
         </div>
-        <div>
-            <ul class="usd_list"></ul>
+        <div id="change_mode">
+            <img id="change_icon" src="./icons/sync-outline.svg" alt="Change mode icon">
         </div>
     </main>
 <script src="script.js"></script>
