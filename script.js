@@ -22,13 +22,13 @@ async function calculator(){
             LIST.innerHTML = `
             <li class="usd blue"><p>Dólar Blue: </p><span>$${data.blue.value_sell} <p class="crry">USD</p></span></li>
             <li class="usd oficial"><p>Dólar Oficial: </p><span>$${data.oficial.value_sell} <p class="crry">USD</p></span></li>
-            <li class="eur blue"><p>Euro Blue: </p><span>$${data.blue_euro.value_sell} <p class="crry">EUR</span></p></li>
+            <li class="eur blue"><p>Euro Blue: </p><span>$${data.blue_euro.value_sell} <p class="crry">EUR</p></span></li>
             <li class="eur oficial"><p>Euro Oficial: </p><span>$${data.oficial_euro.value_sell} <p class="crry">EUR</p></span></li>` 
         } else if(boolean){
             LIST.innerHTML = `
             <li class="usd blue"><p>Dólar Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.blue.value_sell)} <p class="crry">USD</p></span></li>
             <li class="usd oficial"><p>Dólar Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.oficial.value_sell)} <p class="crry">USD</p></span></li>
-            <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.blue_euro.value_sell)} <p class="crry">EUR</span></p></li>
+            <li class="eur blue"><p>Euro Blue: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.blue_euro.value_sell)} <p class="crry">EUR</p></span></li>
             <li class="eur oficial"><p>Euro Oficial: </p><span>$${Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(getInputValue() / data.oficial_euro.value_sell)} <p class="crry">EUR</p></span></li>` 
         }
         else{
