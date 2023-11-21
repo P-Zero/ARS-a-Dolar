@@ -12,13 +12,19 @@
 </head>
 <body>
     <main id="main">
-        <div>
-            <input min="0" type="number" id="currency" autofocus>
+        <div class="app_container">
+            <div class="currency_container">
+                <input min="0" type="number" class="currency_value" placeholder="0" autofocus>
+                <div class="currency_type-container">
+                    <p class="currency_type"></p>
+                </div>
+            </div>
             <ul id="currency_list">
-                <li class="usd blue"><p>Dólar Blue: </p><span class="loading"></span></li>
-                <li class="usd oficial"><p>Dólar Oficial: </p><span class="loading"></span></li>
-                <li class="eur blue"><p>Euro Blue: </p><span class="loading"></span></li>
-                <li class="eur oficial"><p>Euro Oficial: </p><span class="loading"></span></li>
+                <li class="usd-blue"><p>Dólar Blue: </p><span class="loading"></span></li>
+                <li class="usd-oficial"><p>Dólar Oficial: </p><span class="loading"></span></li>
+                <li class="usd-tarjeta"><p>Dólar Tarjeta: </p><span class="loading"></span></li>
+                <li class="eur-blue"><p>Euro Blue: </p><span class="loading"></span></li>
+                <li class="eur-oficial"><p>Euro Oficial: </p><span class="loading"></span></li>
             </ul>
         </div>
         <div id="change_mode">

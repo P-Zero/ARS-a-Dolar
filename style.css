@@ -33,27 +33,73 @@ main{
     font-size: 1.9em;
 }
 
-main div input{
+.app_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.currency_container{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.currency_value{
     box-sizing: border-box;
     border: none;
     outline: none;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     font-size: 1em;
     padding: 12px;
-    margin-bottom: 16px;
-    width: 100%;
+    width: 60%;
     background-color: #e7ffe8;
     transition: box-shadow 0.5s ease;
-    text-align: center;
+    text-align: start;
+    position: relative;
+    z-index: 10;
+    appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-main div input::placeholder{
-    text-align: center;
+.currency_type-container{
+    width: 40%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: #e7ffe8;
+    border-radius: 0 12px 12px 0;
+    padding: 12px;
+    transition: box-shadow 0.5s ease;
 }
 
-main div input:focus{
+.currency_type{
+    text-align: end;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.75em;
+}
+
+.currency_value::placeholder{
+    text-align: start;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.currency_value:focus{
     outline: none;
     box-shadow: -6px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.currency_value:focus + .currency_type-container{
+    outline: none;
+    box-shadow: -6px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.currency_value::-webkit-inner-spin-button,
+.currency_value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 ul{
@@ -64,6 +110,7 @@ ul{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
 }
 
 li{
@@ -72,18 +119,18 @@ li{
     align-items: center;
 }
 
-li p{
+li p:nth-child(1){
     font-weight: 700;
 }
 
-li span{
+li p:nth-child(2){
     letter-spacing: 2px;
 }
 
 .crry{
     display: inline;
     font-weight: 700;
-    font-size: .7em;
+    font-size: 0.7em;
 }
 
 .loading{
@@ -115,6 +162,7 @@ li span{
     position: relative;
     z-index: -1;
     width: 36px;
+    height: 100%;
     background-color: #ededed;
     border-radius: 80px;
     padding: 8px;
@@ -130,20 +178,18 @@ li span{
         box-shadow: -20px 20px 2px rgba(0, 0, 0, 0.2);
     }
 
-    main div input{
-        font-size: 36px;
-        letter-spacing: 1px;
-        text-align: start;
-        margin-bottom: 36px;
-    }
-
-    main div input::placeholder{
-        text-align: end;
-    }
-
-    main div input:focus{
+    .currency_value:focus{
         outline: none;
         box-shadow: -10px 10px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .currency_value:focus + .currency_type-container{
+        outline: none;
+        box-shadow: -10px 10px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    ul{
+        gap: 0;
     }
 
     li{
@@ -157,7 +203,7 @@ li span{
         letter-spacing: 1px;
     }
 
-    li span{
+    li p:nth-child(2){
         margin-left: 36px;
     }
 
