@@ -66,10 +66,10 @@ function calculator() {
                 let convertedValue = currency.value
                 
                 if (inputValue > 0) {
-                    convertedValue = formatNumber(boolean ? inputValue * currency.value : inputValue / currency.value)
+                    convertedValue = boolean ? inputValue * currency.value : inputValue / currency.value
                 }
 
-                return `<li><p>${currency.label}: </p><p>$${convertedValue} <span class="crry">${currencyTypeCrry}</span></p></li>`
+                return `<li><p>${currency.label}: </p><p>$${formatNumber(convertedValue)} <span class="crry">${currencyTypeCrry}</span></p></li>`
             })
             .join('')
     

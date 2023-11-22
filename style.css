@@ -12,6 +12,7 @@
     margin: 0;
     font-family: 'Nunito Sans', sans-serif;
     color: #444;
+    box-sizing: border-box;
 }
 
 body{
@@ -52,7 +53,7 @@ main{
     border: none;
     outline: none;
     border-radius: 12px 0 0 12px;
-    font-size: 1em;
+    font-size: 1.2em;
     padding: 12px;
     width: 60%;
     background-color: #e7ffe8;
@@ -71,14 +72,15 @@ main{
     align-items: center;
     background-color: #e7ffe8;
     border-radius: 0 12px 12px 0;
-    padding: 12px;
+    padding-right: 8px;
     transition: box-shadow 0.5s ease;
+    user-select: none;
 }
 
 .currency_type{
     text-align: end;
     color: rgba(0, 0, 0, 0.4);
-    font-size: 0.75em;
+    font-size: 0.8em;
 }
 
 .currency_value::placeholder{
@@ -131,6 +133,7 @@ li p:nth-child(2){
     display: inline;
     font-weight: 700;
     font-size: 0.7em;
+    user-select: none;
 }
 
 .loading{
@@ -152,30 +155,40 @@ li p:nth-child(2){
 
 #change_mode{
     position: absolute;
-    width: auto;
-    height: auto;
+    background-color: #ededed;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 80px;
+    height: 60px;
     cursor: pointer;
+    border-radius: 0 80px 80px 0;
+    transform: rotate(90deg);
     bottom: -70px;
+    user-select: none;
 }
 
-#change_mode img{
-    position: relative;
-    z-index: -1;
-    width: 36px;
-    height: 100%;
-    background-color: #ededed;
-    border-radius: 80px;
-    padding: 8px;
-    padding-top: 48px;
+#change_icon{
+    width: 50px;
+    height: 50px;
+    transform: rotate(90deg);
+    user-select: none;
 }
 
 @media (min-width:800px) {
     main{
-        margin: 0;
         padding: 28px;
         font-size: 2em;
         height: auto;
         box-shadow: -20px 20px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .currency_value{
+        font-size: 1.3em;
+    }
+
+    .currency_type{
+        font-size: 1em;
     }
 
     .currency_value:focus{
@@ -208,12 +221,18 @@ li p:nth-child(2){
     }
 
     #change_mode{
-        right: -60px;
-        bottom: 0;
+        right: -80px;
+        bottom: 20px;
+        transform: none;
     }
-    
-    #change_mode img{
-        padding: 8px;
-        padding-left: 36px;
+
+    #change_icon{
+        transform: none;
+        filter: invert(13%) sepia(6%) saturate(0%) hue-rotate(156deg) brightness(109%) contrast(84%);
+    }
+
+    #change_mode:hover #change_icon{
+        transform: rotate(180deg);
+        transition: 0.3s transform ease;
     }
 }
