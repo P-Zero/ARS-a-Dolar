@@ -56,7 +56,7 @@ function calculator() {
         const currencyList = [
             { label: 'Dólar Blue', value: data.blue.value_sell },
             { label: 'Dólar Oficial', value: data.oficial.value_sell },
-            { label: 'Dólar Tarjeta', value: data.oficial.value_sell * 2.55 },
+            { label: 'Dólar Tarjeta', value: data.oficial.value_sell * 1.6 },
             { label: 'Euro Blue', value: data.blue_euro.value_sell },
             { label: 'Euro Oficial', value: data.oficial_euro.value_sell },
         ]
