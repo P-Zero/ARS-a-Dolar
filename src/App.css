@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;500;700&display=swap');
+@keyframes loading-skeleton {
+    0%, 100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #444;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #45b34d;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #88e88d;
+    border-radius: 12px;
+    padding: 12px;
+    border: #fff 4px solid;
+    margin: 0 12px;
+    font-size: 1.9em;
+}
+
+.app_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.currency_container{
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.currency_value{
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-radius: 12px 0 0 12px;
+    font-size: 1.2em;
+    padding: 12px;
+    width: 100%;
+    background-color: #e7ffe8;
+    transition: box-shadow 0.5s ease;
+    text-align: start;
+    position: relative;
+    z-index: 10;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.currency_type-container{
+    width: auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: #e7ffe8;
+    border-radius: 0 12px 12px 0;
+    padding-right: 8px;
+    transition: box-shadow 0.5s ease;
+    user-select: none;
+}
+
+.currency_type{
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8em;
+}
+
+.currency_value::placeholder{
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.currency_value:focus{
+    outline: none;
+    box-shadow: -6px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.currency_value:focus + .currency_type-container{
+    outline: none;
+    box-shadow: -6px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.currency_value::-webkit-inner-spin-button,
+.currency_value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+ul{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+li p:nth-child(1){
+    font-weight: 700;
+}
+
+li p:nth-child(2){
+    letter-spacing: 2px;
+}
+
+.crry{
+    display: inline;
+    font-weight: 700;
+    font-size: 0.7em;
+    user-select: none;
+}
+
+.loading{
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    margin: 8px 0;
+    background-color: #e7ffe8;
+    border-radius: 12px;
+    animation: loading-skeleton infinite 1s;
+}
+
+#change_mode{
+    position: absolute;
+    background-color: #ededed;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 0 80px 80px 0;
+    transform: rotate(90deg);
+    bottom: -70px;
+    right: 8%;
+    user-select: none;
+    border: none;
+}
+
+#change_icon{
+    width: 50px;
+    height: 50px;
+    transform: rotate(90deg);
+    user-select: none;
+}
+
+@media (min-width:800px) {
+    main{
+        padding: 28px;
+        font-size: 2em;
+        height: auto;
+        box-shadow: -20px 20px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .currency_type-container{
+        min-width: 168px;
+    }
+
+    .currency_value{
+        font-size: 1.3em;
+    }
+
+    .currency_type{
+        font-size: 1em;
+    }
+
+    .currency_value:focus{
+        outline: none;
+        box-shadow: -10px 10px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .currency_value:focus + .currency_type-container{
+        outline: none;
+        box-shadow: -10px 10px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    ul{
+        gap: 0;
+    }
+
+    li{
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    li p{
+        letter-spacing: 1px;
+    }
+
+    li p:nth-child(2){
+        margin-left: 36px;
+    }
+
+    #change_mode{
+        top: 80%;
+        right: -80px;
+        transform: none;
+    }
+
+    #change_icon{
+        transform: none;
+        filter: invert(13%) sepia(6%) saturate(0%) hue-rotate(156deg) brightness(109%) contrast(84%);
+    }
+
+    #change_mode:hover #change_icon{
+        transform: rotate(180deg);
+        transition: 0.3s transform ease;
+    }
+}
